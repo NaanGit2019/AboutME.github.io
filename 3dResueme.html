@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karthikeyan M - 3D Portfolio CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3), transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3), transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3), transparent 50%),
+                linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            perspective: 1000px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 30px;
+            box-shadow: 
+                0 50px 100px rgba(0, 0, 0, 0.4),
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            overflow: hidden;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(0deg); }
+            50% { transform: translateY(-10px) rotateX(1deg); }
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #ff006e, #fb5607, #ffbe0b, #8338ec, #3a86ff);
+            background-size: 300% 100%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            transform-style: preserve-3d;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; transform: translateX(0); }
+            50% { opacity: 0.7; transform: translateX(20px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            transform-style: preserve-3d;
+        }
+
+        .name {
+            font-size: 4em;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 
+                4px 4px 8px rgba(0,0,0,0.3),
+                0 0 20px rgba(255,255,255,0.2);
+            transform: translateZ(50px);
+            animation: nameGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes nameGlow {
+            0% { text-shadow: 4px 4px 8px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.2); }
+            100% { text-shadow: 4px 4px 8px rgba(0,0,0,0.3), 0 0 30px rgba(255,255,255,0.4); }
+        }
+
+        .title {
+            font-size: 2em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            transform: translateZ(30px);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            transform: translateZ(20px);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1));
+            padding: 15px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 8px 16px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transform-style: preserve-3d;
+        }
+
+        .contact-item:hover {
+            background: linear-gradient(145deg, rgba(255,255,255,0.35), rgba(255,255,255,0.2));
+            transform: translateY(-8px) translateZ(10px) scale(1.05);
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .contact-icon {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(145deg, #ffd93d, #ffb93d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #333;
+            box-shadow: 
+                0 4px 8px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            transform: translateZ(5px);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 0;
+            min-height: 800px;
+        }
+
+        .left-column {
+            background: linear-gradient(145deg, #ff6b6b 0%, #ffa500 100%);
+            color: white;
+            padding: 50px 40px;
+            position: relative;
+            transform-style: preserve-3d;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        .left-column::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .right-column {
+            padding: 50px 40px;
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            transform-style: preserve-3d;
+            animation: sectionSlide 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-50px) translateZ(-20px);
+        }
+
+        @keyframes sectionSlide {
+            to {
+                opacity: 1;
+                transform: translateX(0) translateZ(0);
+            }
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+
+        .section-title {
+            font-size: 2.2em;
+            font-weight: 900;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            transform: translateZ(10px);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .left-column .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #ffd93d, #ffb93d);
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .right-column .section-title {
+            color: #333;
+        }
+
+        .right-column .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ffa500);
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .skill-item {
+            background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1));
+            padding: 15px 25px;
+            margin: 12px 0;
+            border-radius: 50px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 8px 16px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            background: linear-gradient(145deg, rgba(255,255,255,0.4), rgba(255,255,255,0.2));
+            transform: translateX(15px) translateZ(20px) scale(1.03);
+            box-shadow: 
+                0 15px 30px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .education-item, .experience-item {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 20px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.1),
+                0 10px 20px rgba(0,0,0,0.05),
+                inset 0 1px 0 rgba(255,255,255,0.7);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 6px solid transparent;
+            background-image: 
+                linear-gradient(145deg, #ffffff, #f0f0f0),
+                linear-gradient(135deg, #ff6b6b, #ffa500);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .education-item:hover, .experience-item:hover {
+            transform: translateY(-10px) translateZ(30px) rotateX(5deg);
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.15),
+                0 15px 30px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+
+        .item-title {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 10px;
+            transform: translateZ(5px);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .item-subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            transform: translateZ(3px);
+        }
+
+        .item-date {
+            background: linear-gradient(145deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 
+                0 6px 12px rgba(255, 107, 107, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transform: translateZ(8px);
+        }
+
+        .item-description {
+            color: #555;
+            line-height: 1.7;
+            transform: translateZ(2px);
+        }
+
+        .languages {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .language-item {
+            background: linear-gradient(145deg, rgba(255,255,255,0.3), rgba(255,255,255,0.15));
+            padding: 12px 25px;
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 8px 16px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .language-item:hover {
+            background: linear-gradient(145deg, rgba(255,255,255,0.4), rgba(255,255,255,0.25));
+            transform: translateZ(15px) scale(1.1) rotateY(10deg);
+            box-shadow: 
+                0 15px 30px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        .projects {
+            display: grid;
+            gap: 25px;
+        }
+
+        .project-item {
+            background: linear-gradient(145deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 15px 30px rgba(102, 126, 234, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-item:hover::before {
+            opacity: 1;
+        }
+
+        .project-item:hover {
+            transform: translateY(-8px) translateZ(25px) rotateX(10deg) rotateY(-5deg);
+            box-shadow: 
+                0 25px 50px rgba(102, 126, 234, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .project-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            transform: translateZ(5px);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .certificates {
+            display: grid;
+            gap: 18px;
+        }
+
+        .certificate-item {
+            background: linear-gradient(145deg, rgba(255,255,255,0.3), rgba(255,255,255,0.15));
+            padding: 18px 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 8px 16px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .certificate-item:hover {
+            background: linear-gradient(145deg, rgba(255,255,255,0.4), rgba(255,255,255,0.25));
+            transform: translateX(10px) translateZ(15px) rotateY(5deg);
+            box-shadow: 
+                0 15px 30px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        .objective {
+            background: linear-gradient(145deg, #6bcf7f, #4d79ff);
+            color: white;
+            padding: 35px;
+            border-radius: 25px;
+            margin-bottom: 40px;
+            font-style: italic;
+            text-align: center;
+            box-shadow: 
+                0 20px 40px rgba(77, 121, 255, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .objective::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: objectiveFloat 15s infinite linear;
+        }
+
+        @keyframes objectiveFloat {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .objective p {
+            position: relative;
+            z-index: 2;
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* 3D Hover Effects for Main Sections */
+        .left-column:hover {
+            transform: translateZ(10px) rotateY(-2deg);
+        }
+
+        .right-column:hover {
+            transform: translateZ(10px) rotateY(2deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .name {
+                font-size: 3em;
+            }
+            
+            .container {
+                margin: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .name {
+                font-size: 2.5em;
+            }
+            
+            .left-column, .right-column {
+                padding: 30px 25px;
+            }
+            
+            body {
+                padding: 20px 10px;
+                perspective: 800px;
+            }
+        }
+
+        /* Scroll-triggered 3D animations */
+        .animate-3d {
+            opacity: 0;
+            transform: translateY(50px) translateZ(-50px) rotateX(45deg);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-3d.visible {
+            opacity: 1;
+            transform: translateY(0) translateZ(0) rotateX(0deg);
+        }
+
+        /* Floating particles effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatParticle 20s infinite linear;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1 class="name">Karthikeyan M</h1>
+                <p class="title">C# Full Stack Developer</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <span>9994845500</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <span>karthideveloper.19@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <span>Coimbatore, India</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-column">
+                <div class="section animate-3d">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <div class="skill-item">HTML, CSS & Bootstrap</div>
+                    <div class="skill-item">JavaScript & jQuery</div>
+                    <div class="skill-item">ASP.NET Core & MVC</div>
+                    <div class="skill-item">Entity Framework</div>
+                    <div class="skill-item">C# & OOPS</div>
+                    <div class="skill-item">LINQ & WebAPI</div>
+                    <div class="skill-item">MS SQL & Stored Procedures</div>
+                    <div class="skill-item">Digital Marketing</div>
+                </div>
+
+                <div class="section animate-3d">
+                    <h2 class="section-title">Application Skills</h2>
+                    <div class="skill-item">Visual Studio 2019 & 2022</div>
+                    <div class="skill-item">Adobe Premier Pro</div>
+                    <div class="skill-item">Figma</div>
+                    <div class="skill-item">Tortoise SVN Repository</div>
+                    <div class="skill-item">GIT Repository</div>
+                    <div class="skill-item">AWS Workspace</div>
+                    <div class="skill-item">MailChimp</div>
+                </div>
+
+                <div class="section animate-3d">
+                    <h2 class="section-title">Languages</h2>
+                    <div class="languages">
+                        <div class="language-item">Tamil</div>
+                        <div class="language-item">English</div>
+                    </div>
+                </div>
+
+                <div class="section animate-3d">
+                    <h2 class="section-title">Certificates</h2>
+                    <div class="certificates">
+                        <div class="certificate-item">Cambridge English: Council of Europe level A2</div>
+                        <div class="certificate-item">NPTEL: Cloud Computing</div>
+                        <div class="certificate-item">Udemy: Microsoft Excel Basic to Advanced</div>
+                        <div class="certificate-item">Skill-up: Advanced Email Marketing</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="objective animate-3d">
+                    <p>I aspire to be a valuable member of a company that fosters both organizational and personal growth. I have unwavering confidence in my abilities and am dedicated to contributing my best to the company's professional development, through continuous learning and teamwork.</p>
+                </div>
+
+                <div class="section animate-3d">
+                    <h2 class="section-title">Experience</h2>
+                    
+                    <div class="experience-item">
+                        <div class="item-date">05/2023 - Present</div>
+                        <div class="item-title">C# Full Stack Developer</div>
+                        <div class="item-subtitle">Kultivate India Software</div>
+                        <div class="item-description">
+                            Developing and managing web applications using .NET Framework and MVC pattern. Working with team using AGILE Methodology. Developed desktop applications using .NET WinForms for certificate creation. Working independently with client requirements in developing modules in .NET Core.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="item-date">02/2019 - 11/2022</div>
+                        <div class="item-title">Digital Marketing and Web Developer</div>
+                        <div class="item-subtitle">Music Zone</div>
+                        <div class="item-description">
+                            Developed and implemented social media strategies to achieve business objectives. Created engaging content for social media platforms. Responsible for developing web applications using .NET Framework, HTML, CSS, Bootstrap, and MySQL. Also handled sales and stock management.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section animate-3d">
+                    <h2 class="section-title">Education</h2>
+                    
+                    <div class="education-item">
+                        <div class="item-date">2015 - 2019</div>
+                        <div class="item-title">BE - Computer Science</div>
+                        <div class="item-subtitle">KPR Institute of Engineering and Technology, Coimbatore</div>
+                        <div class="item-description">Percentage: 63%</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="item-date">2014 - 2015</div>
+                        <div class="item-title">HSC</div>
+                        <div class="item-subtitle">Kongu Vellalar Matriculation Higher Secondary School, Coimbatore</div>
+                        <div class="item-description">Percentage: 82%</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="item-date">2012 - 2013</div>
+                        <div class="item-title">SSLC</div>
+                        <div class="item-subtitle">Kongu Vellalar Matriculation Higher Secondary School, Coimbatore</div>
+                        <div class="item-description">Percentage: 86%</div>
+                    </div>
+                </div>
+
+                <div class="section animate-3d">
+                    <h2 class="section-title">Projects</h2>
+                    <div class="projects">
+                        <div class="project-item">
+                            <div class="project-title">E-commerce Web Application</div>
+                            <div>Inspired by Lightning - Full-featured online shopping platform</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Hotel Employee Management System</div>
+                            <div>Web application for managing hotel staff and operations</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Desktop Certificate Application</div>
+                            <div>Student certification creation system for colleges and schools</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Project Management System</div>
+                            <div>Web application for tracking and managing projects</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() *
