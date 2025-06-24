@@ -230,6 +230,178 @@
             justify-content: center;
             font-size: 3rem;
         }
+  /* Experience Section Styles */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #40e0d0, #ff6b6b);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            width: 45%;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(64, 224, 208, 0.2);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            margin-right: 55%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #40e0d0, #ff6b6b);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            border: 4px solid rgba(12, 12, 12, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            width: 24px;
+            height: 24px;
+            box-shadow: 0 0 30px rgba(64, 224, 208, 0.6);
+        }
+
+        .job-period {
+            background: linear-gradient(45deg, #40e0d0, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .job-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #40e0d0;
+            margin-bottom: 8px;
+        }
+
+        .company-name {
+            font-size: 1.1rem;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .job-description {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .key-achievements {
+            margin-top: 15px;
+        }
+
+        .key-achievements h4 {
+            color: #40e0d0;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievement-list li {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 6px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .achievement-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #40e0d0;
+            font-size: 0.8rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(64, 224, 208, 0.2);
+            color: #40e0d0;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(64, 224, 208, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(64, 224, 208, 0.3);
+            transform: scale(1.05);
+        }
+
+        .duration-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #40e0d0);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
 
         /* Portfolio Grid */
         .portfolio-grid {
@@ -458,6 +630,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -577,7 +750,111 @@
             </div>-->
         </div>
     </section>
+ <!-- Experience Section -->
+    <section class="section" id="experience">
+        <h2>Professional Journey</h2>
+        <div class="timeline">
+            <!-- Current Position -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="duration-badge">1.5+ Years</div>
+                    <div class="job-period">MAY 2023 - PRESENT</div>
+                    <h3 class="job-title">C# Full Stack Developer</h3>
+                    <div class="company-name">Kultivate India Software</div>
+                    <p class="job-description">
+                        Leading full-stack development initiatives using .NET Framework and Core technologies. Responsible for architecting scalable web applications following MVC patterns and AGILE methodology with cross-functional teams.
+                    </p>
+                    <div class="key-achievements">
+                        <h4>Key Achievements:</h4>
+                        <ul class="achievement-list">
+                            <li>Developed desktop certificate application using .NET WinForms for educational institutions</li>
+                            <li>Built independent client modules using .NET Core with various programming patterns</li>
+                            <li>Implemented AWS Workspace integration for cloud-based solutions</li>
+                            <li>Led project development using AGILE methodology with team collaboration</li>
+                            <li>Created responsive web applications with modern UI/UX principles</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">.NET Core</span>
+                        <span class="tech-tag">ASP.NET MVC</span>
+                        <span class="tech-tag">Entity Framework</span>
+                        <span class="tech-tag">WinForms</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">MS SQL</span>
+                        <span class="tech-tag">AGILE</span>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Previous Position -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="duration-badge">3.5+ Years</div>
+                    <div class="job-period">FEBRUARY 2019 - NOVEMBER 2022</div>
+                    <h3 class="job-title">Digital Marketing & Web Developer</h3>
+                    <div class="company-name">Music Zone</div>
+                    <p class="job-description">
+                        Dual-role position combining web development expertise with digital marketing strategies. Developed comprehensive web applications while managing social media campaigns and business growth initiatives.
+                    </p>
+                    <div class="key-achievements">
+                        <h4>Key Achievements:</h4>
+                        <ul class="achievement-list">
+                            <li>Developed and maintained web applications using .NET Framework and MVC</li>
+                            <li>Created engaging content strategies for Facebook and Instagram platforms</li>
+                            <li>Implemented email marketing campaigns using MailChimp</li>
+                            <li>Managed sales operations and inventory control systems</li>
+                            <li>Built responsive front-end interfaces using HTML, CSS, and Bootstrap</li>
+                            <li>Handled client communications and requirement gathering</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">.NET Framework</span>
+                        <span class="tech-tag">MVC</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">Bootstrap</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">MailChimp</span>
+                        <span class="tech-tag">Social Media</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education/Early Career -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="duration-badge">4 Years</div>
+                    <div class="job-period">2015 - 2019</div>
+                    <h3 class="job-title">Education & Skill Development</h3>
+                    <div class="company-name">KPR Institute of Engineering and Technology</div>
+                    <p class="job-description">
+                        Completed Bachelor of Engineering in Computer Science while building foundational programming skills and working on various academic and personal projects to establish expertise in web development.
+                    </p>
+                    <div class="key-achievements">
+                        <h4>Key Milestones:</h4>
+                        <ul class="achievement-list">
+                            <li>BE Computer Science degree with 63% (KPR Institute of Engineering)</li>
+                            <li>HSC with 82% (Kongu Vellalar Matriculation Higher Secondary School)</li>
+                            <li>SSLC with 86% academic performance</li>
+                            <li>Built foundational knowledge in C#, OOP concepts, and database management</li>
+                            <li>Completed NPTEL Cloud Computing certification</li>
+                            <li>Cambridge English Council of Europe Level A2 certification</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">C# Fundamentals</span>
+                        <span class="tech-tag">OOPS</span>
+                        <span class="tech-tag">Database Design</span>
+                        <span class="tech-tag">Cloud Computing</span>
+                        <span class="tech-tag">Academic Projects</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Skills Section -->
     <section class="section" id="skills">
         <h2>Skills & Expertise</h2>
@@ -686,7 +963,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 It's me Naan. All rights reserved. Crafted with passion and creativity.</p>
+        <p>&copy; 2025 Alex Morgan. All rights reserved. Crafted with passion and creativity.</p>
     </footer>
 
     <script>
