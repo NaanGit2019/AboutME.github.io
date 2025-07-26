@@ -434,6 +434,11 @@
             font-size: 3rem;
             color: white;
         }
+		.portfolio-image img
+		{width:100%;
+		height:100%;
+		padding:5px
+		}
 
         .portfolio-content {
             padding: 25px;
@@ -567,7 +572,10 @@
             background: rgba(0, 0, 0, 0.3);
             color: rgba(255, 255, 255, 0.6);
         }
-
+.Menuselector
+{display:none;
+cursor: -webkit-grab;
+ cursor: grab;}
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             nav {
@@ -578,6 +586,11 @@
                 gap: 20px;
             }
 
+			.Menuselector
+			{
+				display:block;
+				
+			}
             .section {
                 padding: 60px 20px;
             }
@@ -595,6 +608,37 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
+			.nav-links.show {
+    display: flex;
+}
+			.nav-links {
+				display: none; /* hide by default */
+				flex-direction: column;
+				position: absolute;
+				width: 18%;
+				background: #80808070;
+				right: 5%;
+				top: 25%;
+				padding: 5px 10px;
+				border-radius: 10px;
+				row-gap: 12px;
+				z-index: 1000;
+				transform:transform(4px)
+			}
+			.close{  
+				display:block !important;
+				right: -52px;
+				position: relative;
+				font-size: 10px;
+				padding: 1px 1px 0px 5px;
+				background: #e8e8e8;
+				border-radius: 5px;
+				width: 20px;
+				color: #ff0000fc;
+				font-weight: 800;
+				}
+
+
         }
 
         /* Smooth scrolling */
@@ -615,3 +659,4 @@
             background: linear-gradient(45deg, #40e0d0, #ff6b6b);
             border-radius: 4px;
         }
+		
