@@ -15,7 +15,9 @@
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">KM</div>
+            <div class="logo Menuselector">⋮⋮⋮</div>
             <ul class="nav-links">
+			<li class="close">X</li>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
@@ -434,6 +436,28 @@
         // Initialize particles on load
         window.addEventListener('load', createParticles);
 
+		const navbar=document.querySelector('.Menuselector');
+		navbar.addEventListener('click',function()
+		{
+		    const navLinks = document.querySelector('.nav-links');
+			navLinks.classList.toggle('show'); // Toggle 'show' class on click
+	
+		});
+		const navbar1=document.querySelector('.close');
+		navbar1.addEventListener('click',function()
+		{
+		    const navLinks = document.querySelector('.nav-links');
+			navLinks.classList.toggle('show'); // Toggle 'show' class on click
+	
+		});
+		
+		function closediv()
+		{
+			const navLinks = document.querySelector('.nav-links');
+			if (navLinks.classList.contains('show')) {
+			navLinks.classList.remove('show'); // Toggle 'show' class on click
+		}
+		}
         // Add intersection observer for scroll animations
         const observerOptions = {
             threshold: 0.1,
