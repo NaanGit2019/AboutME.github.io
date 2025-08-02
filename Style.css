@@ -581,7 +581,21 @@ cursor: -webkit-grab;
             nav {
                 padding: 15px 20px;
             }
-
+		.about-content{
+	grid-template-columns:none;
+				}
+				.timeline-content
+				{
+					width:100%;
+				}
+				.timeline-item:nth-child(even) .timeline-content
+				{
+					margin-left:0
+				}
+				.timeline::before
+				{
+					display:none;
+				}
             .nav-links {
                 gap: 20px;
             }
@@ -659,4 +673,8 @@ cursor: -webkit-grab;
             background: linear-gradient(45deg, #40e0d0, #ff6b6b);
             border-radius: 4px;
         }
+		.close
+		{		
+			display:none;	
+		}
 		
