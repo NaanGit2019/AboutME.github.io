@@ -92,6 +92,7 @@
                         <span class="tech-tag">C#</span>
                         <span class="tech-tag">Bootstrap</span>
                         <span class="tech-tag">jQuery</span>
+                        <span class="tech-tag">Angular</span>
                     </div>
                 </div>
             </div>
@@ -287,6 +288,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const ctx = document.getElementById('polarSkillsChart').getContext('2d');
 
     const labels = [
+		'DSA (Basic)',
         'Languages & OOP (C#, JS, HTML, CSS)',
         'WPF',
         'WinForms',
@@ -298,13 +300,14 @@ document.addEventListener("DOMContentLoaded", function() {
         'Tools (VS, Git, AWS)',
         'SVN',
         'Agile / Scrum',
-		'Team Management and Marketing'
+		'Team Management and Marketing',
+		'Angular (Basic)'
     ];
 
-    const dataValues = [4, 0.5, 0.5, 4, 2.5, 4, 0.5, 4, 4, 2, 3,4.75];
-    const colors = [
+    const dataValues = [0,4, 0.5, 0.5, 4, 2.5, 4, 0.5, 4, 4, 2, 3,4.75,0.5];
+    const colors = ['',
         '#6366f1','#a855f7','#06b6d4','#22c55e','#eab308',
-        '#f97316','#ef4444','#3b82f6','#14b8a6','#8b5cf6','#10b981','#eac105'
+        '#f97316','#ef4444','#3b82f6','#14b8a6','#8b5cf6','#10b981','#eac105','#40e0d0'
     ];
 
     new Chart(ctx, {
