@@ -50,23 +50,17 @@
         <h2>About Me</h2>
         <div class="about-content">
             <div class="about-text">
-				<p>Passionate Full Stack C# Developer with 4+ years of experience building scalable web and desktop applications using .NET Framework, ASP.NET Core MVC, Entity Framework, and Web APIs. Skilled in front-end technologies including HTML, CSS, Bootstrap, and JavaScript, with strong expertise in MS SQL Server.</p>
-                <p>Before transitioning fully into development, I also gained 2 years of digital marketing experience, which helps me better understand user behavior, product flow, and data-driven decisions.</p>
-				<p></p>
-				<p>Recently certified in AI Data Training with knowledge in SFT, RLHF, data annotation, and AI quality standards.</p>
-				<p>Committed to continuous learning, innovation, and collaborative development.</p>
-               <!-- <p>I'm a passionate Full Stack C# Developer with 4+ years of experience in developing robust web applications and digital solutions. I specialize in .NET Framework, ASP.NET Core MVC, and Entity Framework to create scalable and efficient web applications.</p>
-				<p>My expertise spans from front-end development using HTML, CSS, Bootstrap, JavaScript to back-end development with C#, Web APIs, and MS SQL Server. I have successfully developed various applications including e-commerce platforms, project management systems, and desktop applications.</p>
-           		<p>Recently certified in AI Data Training with knowledge in Supervised Fine-Tuning (SFT), RLHF, AI data annotation, evaluation, and AI quality standards.  </p>
-				<p>I aspire to be a valuable team member in an organization that fosters both professional and personal growth through continuous learning, innovation, and collaborative development.</p>
-           -->
-			</div>
+                <p>I'm a passionate Full Stack C# Developer with <span id="relevantExpText"></span> of relevant experience and <span id="overallExpText"></span> of total professional experience in developing robust web applications and digital solutions. I specialize in .NET Framework, ASP.NET Core MVC, and Entity Framework to create scalable and efficient web applications.</p>
+                <p>My expertise spans from front-end development using HTML, CSS, Bootstrap, JavaScript to back-end development with C#, Web APIs, and MS SQL Server. I have successfully developed various applications including e-commerce platforms, project management systems, and desktop applications.</p>
+                <p>I aspire to be a valuable team member in an organization that fosters both professional and personal growth through continuous learning, innovation, and collaborative development.</p>
+            </div>
             <div class="about-image">
                 <div class="profile-card">
                     <div class="profile-img">👨‍💻</div>
                     <h3>C# Full Stack Developer</h3>
                     <p>Based in Coimbatore, India</p>
-                    <p>4+ Years Experience</p>
+                    <p id="totalExperience"></p>
+                    <p id="relevantExperience"></p>
                 </div>
             </div>
         </div>
@@ -215,7 +209,7 @@
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <div class="duration-badge">2.5+ Years</div>
+                    <div class="duration-badge" id="kultivateDuration"></div>
                     <div class="job-period">MAY 2023 - PRESENT</div>
                     <h3 class="job-title">C# Full Stack Developer</h3>
                     <div class="company-name"><a href="https://kultivate.in/">  Kultivate India Software</a></div>
@@ -248,7 +242,7 @@
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <div class="duration-badge">3.5+ Years</div>
+                    <div class="duration-badge" id="musicZoneDuration"></div>
                     <div class="job-period">FEBRUARY 2019 - NOVEMBER 2022</div>
                     <h3 class="job-title">Digital Marketing & Web Developer</h3>
                     <div class="company-name"><a href="https://musiczone.in/">Music Zone</a></div>
@@ -335,7 +329,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const ctx = document.getElementById('polarSkillsChart').getContext('2d');
 
     const labels = [
-		'AI Model Training(Basic)','DSA (Basic)',
+		'DSA (Basic)',
         'Languages & OOP (C#, JS, HTML, CSS)',
         'WPF',
         'WinForms',
@@ -348,13 +342,14 @@ document.addEventListener("DOMContentLoaded", function() {
         'SVN',
         'Agile / Scrum',
 		'Team Management and Marketing',
-		'Angular (Basic)'
+		'Angular (Basic)',
+		'AI(Prompt Engineering, Agents,Azure Foundry)'
     ];
 
-    const dataValues = [0,0,4, 0.5, 0.5, 4, 2.5, 4, 0.5, 4, 4, 2, 3,4.75,0.5];
-    const colors = ['','#6366f6',
+    const dataValues = [0,4, 0.5, 0.5, 4, 2.5, 4, 0.5, 4, 4, 2, 3,4.75,0.5,2.5];
+    const colors = ['',
         '#6366f1','#a855f7','#06b6d4','#22c55e','#eab308',
-        '#f97316','#ef4444','#3b82f6','#14b8a6','#8b5cf6','#10b981','#eac105','#40e0d0'
+        '#f97316','#ef4444','#3b82f6','#14b8a6','#8b5cf6','#10b981','#eac105','#40e0d0','#d845f1'
     ];
 
     new Chart(ctx, {
@@ -462,6 +457,17 @@ document.addEventListener("DOMContentLoaded", function() {
                     <li>Project Management</li>
                     <li>Team Collaboration</li>
                     <li>Technical Documentation</li>
+                </ul>
+            </div>
+			 <div class="skill-category">
+                <div class="skill-icon">🤖</div>
+                <h3>AI</h3>
+                <ul class="skill-list">
+                    <li>Azure Foundry AI</li>
+                    <li>Claude</li>
+					<li>Git CoPilot</li>
+					<li>Prompt Engineering</li>
+                    
                 </ul>
             </div>
         </div>
@@ -629,5 +635,47 @@ document.addEventListener("DOMContentLoaded", function() {
             observer.observe(section);
         });
     </script>
+
+<script>
+function calculateExperience(startDate, endDate = new Date()) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    let years = end.getFullYear() - start.getFullYear();
+    let months = end.getMonth() - start.getMonth();
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    return +(years + months / 12).toFixed(1);
+}
+
+const musicZoneExp = calculateExperience("2019-02-01", "2022-11-01");
+const kultivateExp = calculateExperience("2023-05-01");
+
+const totalExp = +(musicZoneExp + kultivateExp).toFixed(1);
+const relevantExp = +(totalExp - 1.8).toFixed(1);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const set = (id, value) => {
+        const el = document.getElementById(id);
+        if(el) el.innerText = value;
+    };
+
+    set("kultivateDuration", `${kultivateExp}+ Years`);
+    set("musicZoneDuration", `${musicZoneExp}+ Years`);
+    set("totalExperience", `Total Experience: ${totalExp}+ Years`);
+    set("relevantExperience", `Relevant .NET Experience: ${relevantExp}+ Years`);
+
+    const rel = document.getElementById("relevantExpText");
+    const overall = document.getElementById("overallExpText");
+
+    if(rel) rel.innerText = `${relevantExp}+ years`;
+    if(overall) overall.innerText = `${totalExp}+ years`;
+});
+</script>
+
 </body>
 </html>
