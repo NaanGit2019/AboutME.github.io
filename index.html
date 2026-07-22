@@ -206,6 +206,36 @@
         <h2>Professional Journey</h2>
         <div class="timeline">
             <!-- Current Position -->
+			<div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="duration-badge" id="epamDuration"></div>
+                    <div class="job-period">May 2026 - PRESENT</div>
+                    <h3 class="job-title">Software Engineer</h3>
+                    <div class="company-name"><a href="https://www.epam.com/">  Epam System</a></div>
+                    <p class="job-description">
+					Software Engineer have developed Web application modules using ASP.net, SQL and Azure.
+                    </p>
+                    <div class="key-achievements">
+                        <h4>Key Achievements:</h4>
+                        <ul class="achievement-list">
+                            <li>Built independent client modules using .NET Core </li>
+                            <li>Worked AGILE methodology with team collaboration</li>
+                            <li>Created responsive web applications with modern UI/UX principles</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">.NET Core</span>
+                        <span class="tech-tag">ASP.NET MVC</span>
+                        <span class="tech-tag">Entity Framework</span>
+                        <span class="tech-tag">Azure</span>
+                        <span class="tech-tag">Azure Foundry</span>
+						<span class="tech-tag">AI Engineering</span>
+                        <span class="tech-tag">MS SQL</span>
+                        <span class="tech-tag">AGILE</span>
+                    </div>
+                </div>
+            </div>
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
@@ -653,7 +683,8 @@ function calculateExperience(startDate, endDate = new Date()) {
 }
 
 const musicZoneExp = calculateExperience("2019-02-01", "2022-11-01");
-const kultivateExp = calculateExperience("2023-05-01");
+const kultivateExp = calculateExperience("2023-05-31","2026-04-30");
+const epamexp = calculateExperience("2026-05-4");
 
 const totalExp = +(musicZoneExp + kultivateExp).toFixed(1);
 const relevantExp = +(totalExp - 1.8).toFixed(1);
@@ -664,6 +695,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if(el) el.innerText = value;
     };
 
+    set("epamDuration", `${epamexp}+ Years`);
     set("kultivateDuration", `${kultivateExp}+ Years`);
     set("musicZoneDuration", `${musicZoneExp}+ Years`);
     set("totalExperience", `Total Experience: ${totalExp}+ Years`);
